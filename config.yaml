@@ -99,33 +99,33 @@ variables:
         required: false
         description: when used will use the value to suffix the names of all converged objects
         type: string
-  TIMEZONE:
-    default: "America/Los_Angeles"
-    value: "America/Los_Angeles"
-    description: the timezone that instances will be configured with
-    overrides:
-    required: true
-    type: string
-  DATADOG_KEY:
-    default:
-    value:
-    description: If you have a datadog key, enter it here and we will install the agent
-    overrides:
-    required: false
-  AWS_LINUX_AMI:
-    description: the ami id for latest AWS Linux
-    switch: "PLAN::region"
-    cases:
-        us-east-1: ami-b73b63a0
-        us-east-2: ami-58277d3d
-        us-west-1: ami-23e8a343
-        us-west-2: ami-5ec1673e
-        ap-south-1: ami-34b4c05b
-        ap-northeast-2: ami-983ce8f6
-        ap-southeast-1: ami-b953f2da
-        ap-southeast-2: ami-db704cb8
-        ap-northeast-1: ami-0c11b26d
-        eu-central-1: ami-f9619996
-        eu-west-1: ami-9398d3e0
-        sa-east-1: ami-97831ffb 
-    type: case
+    TIMEZONE:
+        default: "America/Los_Angeles"
+        value: "America/Los_Angeles"
+        description: the timezone that instances will be configured with
+        overrides:
+        required: true
+        type: string
+    DATADOG_KEY:
+        default:
+        value:
+        description: If you have a datadog key, enter it here and we will install the agent
+        overrides:
+        required: false
+    AWS_LINUX_AMI:
+        description: the ami id for latest AWS Linux
+        switch: "PLAN::region"
+        cases:
+              us-east-1: ami-b73b63a0
+              us-east-2: ami-58277d3d
+              us-west-1: ami-23e8a343
+              us-west-2: ami-5ec1673e
+              ap-south-1: ami-34b4c05b
+              ap-northeast-2: ami-983ce8f6
+              ap-southeast-1: ami-b953f2da
+              ap-southeast-2: ami-db704cb8
+              ap-northeast-1: ami-0c11b26d
+              eu-central-1: ami-f9619996
+              eu-west-1: ami-9398d3e0
+              sa-east-1: ami-97831ffb 
+        type: case
