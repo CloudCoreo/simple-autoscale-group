@@ -85,13 +85,6 @@ variables:
         default: initial
         description: A String used to trigger upgrades of ec2 instances. If specified, CloudCoreo will not roll instances unless this value changes.
         required: false
-    TIMEZONE:
-        default: America/Los_Angeles
-        value: America/Los_Angeles
-        description: the timezone the servers should come up in
-        overrides: null
-        required: true
-        type: string
     SERVER_KEYPAIR:
         description: the name of the keypair to launch server with
         required: true
