@@ -77,6 +77,12 @@ variables:
         overrides: null
         required: true
         type: array
+    ENVIRONMENT_VARIABLES:
+        default:
+        description: null
+        overrides: null
+        required: false
+        type: array
     SERVER_SIZE:
         default: t2.micro
         description: the size of the server to launch
