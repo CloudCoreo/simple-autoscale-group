@@ -1,0 +1,131 @@
+variables:
+    AUTOSCALING_GROUP_MAXIMUM:
+        default: 1
+        description: Maximum number of instances the autoscale group will launch
+        overrides:
+        required: true
+        type: number
+    AUTOSCALING_GROUP_MINIMUM:
+        default: 1
+        description: Minimum number of instances the autoscale group will launch
+        overrides:
+        required: true
+        type: number
+    ROOT_VOLUME_SIZE_IN_GB:
+        default: 100
+        description: Root disk size in gigabytes
+        overrides:
+        required: true
+        type: number
+    VPC_NAME:
+        default: test-vpc
+        description: The name of the VPC that this server is to be created in
+        overrides: null
+        required: true
+        type: string
+    VPC_CIDR:
+        default: 10.11.0.0/16
+        description: The CIDR to match to locate the VPC that this server is to be created in
+        required: true
+        type: string
+    VPC_TAGS:
+        required: false
+        description: tags to apply to the vpc
+        type: array
+        default:
+            - "env=dev.app.hack"
+    PRIVATE_ROUTE_NAME:
+        default: test-private-route
+        description: null
+        overrides: null
+        required: true
+        type: string
+    PRIVATE_SUBNET_NAME:
+        default: test-private-subnet
+        description: The name of the private subnet you want to create your server in
+        overrides: null
+        required: true
+        type: string
+    SERVER_NAME:
+        default: simple-server
+        description: the name of the server
+        required: true
+    SERVER_INGRESS_PORTS:
+        default:
+            - 80
+            - 22
+        description: Ports to open up in the server security group
+        required: true
+        type: array
+    SERVER_INGRESS_CIDRS:
+        default:
+            - 0.0.0.0/0
+        description: null
+        overrides: null
+        required: true
+        type: array
+    SERVER_EGRESS_PORTS:
+        default:
+            - 0..65535
+        description: Ports to open up in the server security group for OUTBOUND Traffic
+        required: true
+        type: array
+    SERVER_EGRESS_CIDRS:
+        default:
+            - 0.0.0.0/0
+        description: null
+        overrides: null
+        required: true
+        type: array
+    SERVER_SIZE:
+        default: t2.micro
+        description: the size of the server to launch
+        required: true
+    SERVER_UPGRADE_TRIGGER:
+        default: initial
+        description: A String used to trigger upgrades of ec2 instances. If specified, CloudCoreo will not roll instances unless this value changes.
+        required: false
+    TIMEZONE:
+        default: America/Los_Angeles
+        value: America/Los_Angeles
+        description: the timezone the servers should come up in
+        overrides: null
+        required: true
+        type: string
+    SERVER_KEYPAIR:
+        description: the name of the keypair to launch server with
+        required: true
+    SUFFIX:
+        required: false
+        description: when used will use the value to suffix the names of all converged objects
+        type: string
+  TIMEZONE:
+    default: "America/Los_Angeles"
+    value: "America/Los_Angeles"
+    description: the timezone that instances will be configured with
+    overrides:
+    required: true
+    type: string
+  DATADOG_KEY:
+    default:
+    value:
+    description: If you have a datadog key, enter it here and we will install the agent
+    overrides:
+    required: false
+  AWS_LINUX_AMI:
+    description: the ami id for latest AWS Linux
+    switch: "PLAN::region"
+    cases:
+        us-east-1: ami-b73b63a0
+        us-east-2: ami-58277d3d
+        us-west-1: ami-23e8a343
+        us-west-2: ami-5ec1673e
+        ap-south-1: ami-34b4c05b
+        ap-northeast-2: ami-983ce8f6
+        ap-southeast-1: ami-b953f2da
+        ap-southeast-2: ami-db704cb8
+        ap-northeast-1: ami-0c11b26d
+        eu-central-1: ami-f9619996
+        eu-west-1: ami-9398d3e0
+        sa-east-1: ami-97831ffb 
+    type: case
