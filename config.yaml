@@ -100,11 +100,31 @@ variables:
         type: string
     TIMEZONE:
         default: "America/Los_Angeles"
-        value: "America/Los_Angeles"
         description: the timezone that instances will be configured with
         overrides:
         required: true
         type: string
+    TIMEZONE_OFFSET:
+        default: "-08:00"
+        description: the GMT offset in hours to be applied to the automatic shutdown system
+        overrides:
+        required: true
+        type: string
+    AUTOMATIC_ON_HOUR:
+        default: 8
+        description: the hour to re-enable the autoscaling group (in 24 hour time format)
+        required: false
+        type: number
+    AUTOMATIC_ON_OFF:
+        default: false
+        description: should this group be added and removed dynamically at the scheduled times?
+        required: false
+        type: boolean
+    AUTOMATIC_OFF_HOUR:
+        default: 18
+        description: the hour to re-enable the autoscaling group (in 24 hour time format)
+        required: false
+        type: number
     DATADOG_KEY:
         default:
         value:
