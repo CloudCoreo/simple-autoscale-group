@@ -90,7 +90,7 @@ end
 
 coreo_aws_ec2_autoscaling "${SERVER_NAME}${SUFFIX}" do
   action :sustain 
-  minimum((${AUTOMATIC_ON_OFF} ? ((${AUTOMATIC_ON_HOUR}..(${AUTOMATIC_OFF_HOUR}-1)).include?(Time.new.getlocal("${TIMEZONE_OFFSET}").hour) ? ${AUTOSCALING_GROUP_MINIMUM} : 0) : ${AUTOSCALING_GROUP_MINIMUM}))
+  minimum((${AUTOMATIC_ON_OFF} ? ((${AUTOMATIC_ON_HOUR}..(${AUTOMATIC_OFF_HOUR}-1)).include?(Time.new.getlocal("${TIMEZONE_OFFSET}").hour) ? ${AUTOSCALING_GROUP_MINIMUM} : 0) : ${AUTOSCALING_GROUP_oMINIMUM}))
   maximum((${AUTOMATIC_ON_OFF} ? ((${AUTOMATIC_ON_HOUR}..(${AUTOMATIC_OFF_HOUR}-1)).include?(Time.new.getlocal("${TIMEZONE_OFFSET}").hour) ? ${AUTOSCALING_GROUP_MAXIMUM} : 0) : ${AUTOSCALING_GROUP_MAXIMUM}))
   server_definition "${SERVER_NAME}${SUFFIX}"
   subnet "${PRIVATE_SUBNET_NAME}"
