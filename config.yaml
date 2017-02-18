@@ -34,6 +34,11 @@ variables:
         type: array
         default:
             - "env=dev.app.hack"
+    PRIVATE_ROUTE_SEARCH_TAGS:
+        required: false
+        description: tags used to search for the private route table
+        type: array
+        default:
     PRIVATE_ROUTE_NAME:
         default: test-private-route
         description: null

@@ -3,7 +3,7 @@
 ##
 ## This config.rb file exists to create and maintain services not related to compute.
 ## for example, a VPC might be maintained using:
-n##
+##
 ## coreo_aws_vpc_vpc "my-vpc" do
 ##   action :sustain
 ##   cidr "12.0.0.0/16"
@@ -19,6 +19,7 @@ end
 coreo_aws_vpc_routetable "${PRIVATE_ROUTE_NAME}" do
   action :find
   vpc "${VPC_NAME}"
+  tags ${PRIVATE_ROUTE_SEARCH_TAGS} unless ${PRIVATE_ROUTE_SEARCH_TAGS}.nil? || ${PRIVATE_ROUTE_SEARCH_TAGS}.empty?
 end
 
 coreo_aws_vpc_subnet "${PRIVATE_SUBNET_NAME}" do
