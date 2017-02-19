@@ -13,13 +13,13 @@
 coreo_aws_vpc_vpc "${VPC_NAME}" do
   action :find
   cidr "${VPC_CIDR}"
-  tags(${VPC_TAGS}) unless ${VPC_TAGS}.nil? || ${VPC_TAGS}.empty?
+  tags(${VPC_TAGS}) unless (${VPC_TAGS}.nil? || ${VPC_TAGS}.delete_if(&:empty?).empty?)
 end
 
 coreo_aws_vpc_routetable "${PRIVATE_ROUTE_NAME}" do
   action :find
   vpc "${VPC_NAME}"
-  tags(${PRIVATE_ROUTE_SEARCH_TAGS}) unless (${PRIVATE_ROUTE_SEARCH_TAGS}.nil? || ${PRIVATE_ROUTE_SEARCH_TAGS}.empty?)
+  tags(${PRIVATE_ROUTE_SEARCH_TAGS}) unless (${PRIVATE_ROUTE_SEARCH_TAGS}.nil? || ${PRIVATE_ROUTE_SEARCH_TAGS}.delete_if(&:empty?).empty?)
 end
 
 coreo_aws_vpc_subnet "${PRIVATE_SUBNET_NAME}" do
