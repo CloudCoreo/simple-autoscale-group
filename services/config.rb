@@ -69,6 +69,9 @@ end
 
 coreo_aws_iam_instance_profile "${SERVER_NAME}${SUFFIX}" do
   action :sustain
+  trust_document <<-EOH
+{"Version": "2012-10-17","Statement": [{"Effect": "Allow","Principal": {"Service": ["ec2.amazonaws.com"]},"Action": ["sts:AssumeRole"]}]}
+EOH
   policies ["${SERVER_NAME}${SUFFIX}"]
 end
 
